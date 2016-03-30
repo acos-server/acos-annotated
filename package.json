@@ -1,10 +1,9 @@
 {
   "name": "acos-annotated",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "acos-annotated",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Teemu Sirkiä, Lassi Haaranen",
   "license": "MIT",
   "repository": {
