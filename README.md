@@ -1,8 +1,7 @@
-Annotated examples
-==================
+# Annotated examples
 
 This is an example content type which demonstrates how
-new content types can be created to ACOS server.
+new content types can be created to Acos server.
 
 In annotated examples, there are code snipptes where
 some lines have annotations which can be viewed by
