@@ -27,14 +27,18 @@ Annotated.initialize = function(req, params, handlers, cb) {
   });
 };
 
-Annotated.handleEvent = function(event, payload, req, res, protocolPayload) {
+Annotated.handleEvent = function(event, payload, req, res, protocolPayload, responseObj, cb) {
   var dir = Annotated.config.logDirectory + '/annotated/' + req.params.contentPackage;
-  if (event == 'log') {
+  if (event === 'log') {
     fs.mkdir(dir, 0775, function(err) {
       var name = payload.exampleId.replace(/\.|\/|\\|~/g, "-") + '.log';
       var data = new Date().toISOString() + ' ' + JSON.stringify(payload) + ' ' + JSON.stringify(protocolPayload || {}) + '\n';
-      fs.writeFile(dir + '/' + name, data, { flag: 'a' }, function(err) {});
+      fs.writeFile(dir + '/' + name, data, { flag: 'a' }, function(err) {
+        cb(event, payload, req, res, protocolPayload, responseObj);
+      });
     });
+  } else {
+    cb(event, payload, req, res, protocolPayload, responseObj);
   }
 };
 
@@ -54,7 +58,7 @@ Annotated.meta = {
   'description': '',
   'author': 'Teemu Sirkiä',
   'license': 'MIT',
-  'version': '0.0.1',
+  'version': '0.2.0',
   'url': ''
 };
 
